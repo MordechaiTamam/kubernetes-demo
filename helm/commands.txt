@@ -4,8 +4,8 @@
 4. helm repo update
 5. helm install my-redis bitnami/redis --set password="secretpass"
 6. kubectl get all
-7. helm upgrade redis-prod stable/redis --set cluster.slaveCount=5 --set password="secretpass" --generate-name
-   helm upgrade redis-prod stable/redis -f values.yaml
+7. helm upgrade redis-prod bitnami/redis --set cluster.slaveCount=5 --set password="secretpass" --generate-name
+   helm upgrade redis-prod bitnami/redis -f values.yaml
 8. helm delete redis-prod
 
 === Installing MySQL using helm =======
