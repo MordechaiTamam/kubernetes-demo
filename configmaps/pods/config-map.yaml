@@ -4,5 +4,5 @@ metadata:
   name: special-config
   namespace: default
 data:
-  special.how: low
+  special.how: high
   special.type: charm
