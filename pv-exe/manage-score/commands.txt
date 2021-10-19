@@ -1,4 +1,6 @@
 docker build -t manage-score .
 docker run -it --rm -e SCORE_FILE=/app/score.txt --name manage-score manage-score:latest
 
-docker run -it --rm -e SCORE_FILE=/mnt/scores/score.txt -v data_volume:/mnt/scores --name manage-score manage-score:latest
+
+docker volume create scores_volume
+docker run -it --rm -e SCORE_FILE=/mnt/scores/score.txt -v scores_volume:/mnt/scores --name manage-score manage-score:latest
