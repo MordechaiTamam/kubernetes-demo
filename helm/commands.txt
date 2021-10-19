@@ -1,11 +1,26 @@
 3. helm repo add bitnami https://charts.bitnami.com/bitnami - Bitnami on Github: https://github.com/bitnami/charts/tree/master/bitnami
 4. helm repo update
-5. helm install my-redis bitnami/redis --set password="secretpass"
+5. helm install redis-prod bitnami/redis --set password="secretpass"
 6. kubectl get all
+
+=== Simple Apache server deployment ====
+helm install my-apache bitnami/apache --version 8.0.2 --set service.type=NodePort
+kubectl get pod
+helm list
+helm upgrade my-apache bitnami/apache --version 8.0.3 --set service.type=NodePort
+helm rollback my-apache 1
+
+
 7. helm upgrade redis-prod bitnami/redis --set cluster.slaveCount=5 --set password="secretpass" --generate-name
    helm upgrade redis-prod bitnami/redis -f values.yaml
 8. helm delete redis-prod
 
 === Installing MySQL using helm =======
 1. helm repo add bitnami https://charts.bitnami.com/bitnami
-2. helm install my-release bitnami/mysql --set password="secretpass"
+2. helm install mysql bitnami/mysql --set password="secretpass"
+
+==== Instaling Jenkins using helm ====
+helm install my-release bitnami/jenkins --set service.type=NodePort
+
+== Installing MongoDB using helm ========
+1. helm install my-release --set auth.rootPassword=secretpassword,auth.username=my-user,auth.password=my-password,auth.database=my-database bitnami/mongodb
