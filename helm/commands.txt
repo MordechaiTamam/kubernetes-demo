@@ -1,5 +1,7 @@
 === helm templating in action ======
-helm template --debug simple-chart/
+helm template --debug simple-chart/ --dry-run
+helm template --debug simple-chart/ --dry-run --values simple-chart/values.prod.yaml
+helm template --debug simple-chart/ --dry-run --values simple-chart/values.nonprod.yaml
 
 === Simple Apache server deployment ====
 helm install my-apache bitnami/apache --version 8.0.2 --set service.type=NodePort
