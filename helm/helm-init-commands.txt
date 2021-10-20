@@ -3,3 +3,7 @@ helm repo update # sync all helm charts info
 helm repo list
 helm list
 
+helm repo add bitnami https://charts.bitnami.com/bitnami - Bitnami on Github: https://github.com/bitnami/charts/tree/master/bitnami
+helm repo update
+helm search repo bitnami
+

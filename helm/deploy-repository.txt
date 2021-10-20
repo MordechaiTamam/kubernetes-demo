@@ -5,3 +5,9 @@ helm repo update
 helm push mychart/ chartmuseum
 
 helm install test1 chartmuseum/mychart --debug
+
+# Listing all chart's version:
+helm search repo chartmuseum/mychart --versions
+
+# With specific version
+helm upgrade test1 chartmuseum/mychart --version=0.2.0
