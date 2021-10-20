@@ -1,0 +1,14 @@
+Volumes:
+# Command that will fail:
+docker run bash:latest bash -c "ls /var/opt/project"
+
+# Even after running that command:
+docker run bash:latest bash -c "mkdir -p /var/opt/project && echo Baeldung > /var/opt/project/Baeldung.txt && ls -l /var/opt/project/"
+
+===== Plain Docker=======
+docker volume create data_volume
+docker volume rm data_volume
+docker run -v data-volume:/var/opt/project bash:latest  bash -c "mkdir -p /var/opt/project"
+docker run -v data-volume:/var/opt/project bash:latest bash -c "ls /var/opt/project"
+docker run -v data-volume:/var/opt/project bash:latest  bash -c "echo Baeldung > /var/opt/project/Baeldung.txt"
+docker run -v data-volume:/var/opt/project bash -c "ls /var/opt/project"
