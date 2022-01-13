@@ -1,10 +1,11 @@
-helm install chartmuseum stable/chartmuseum -f chartmuseum-values.yaml
-helm plugin install https://github.com/chartmuseum/helm-push
+helm install museum stable/chartmuseum -f chartmuseum-values.yaml
+helm plugin install https://github.com/chartmuseum/helm-push.git
 helm repo add chartmuseum http://$(minikube ip):32688
 helm repo update
-helm push mychart/ chartmuseum
+helm cm-push mychart/ chartmuseum
+helm repo update
 
-helm install test1 chartmuseum/mychart --debug
+helm install mychart chartmuseum/mychart --debug
 
 # Listing all chart's version:
 helm search repo chartmuseum/mychart --versions

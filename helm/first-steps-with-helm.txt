@@ -1,9 +1,5 @@
-=== helm templating in action ======
-helm template --debug simple-chart/ --dry-run
-helm template --debug simple-chart/ --dry-run --values simple-chart/values.prod.yaml
-helm template --debug simple-chart/ --dry-run --values simple-chart/values.nonprod.yaml
-
-=== Simple Apache server deployment ====
+=======================================
+=== Simple Apache server deployment ===
 helm install my-apache bitnami/apache --version 8.0.2 --set service.type=NodePort
 kubectl get pod
 helm list
@@ -11,20 +7,25 @@ helm upgrade my-apache bitnami/apache --version 8.0.3 --set service.type=NodePor
 
 # Rolling back for previous deployment
 helm rollback my-apache 1
+=====================================
+=====================================
 
-=== Installing Redis Cluster =====
-helm install redis-prod bitnami/redis --set password="secretpass"
-kubectl get all
-helm upgrade redis-prod bitnami/redis --set cluster.slaveCount=5 --set password="secretpass" --generate-name
-helm upgrade redis-prod bitnami/redis -f values.yaml
-helm delete redis-prod
+=====================================
+=== helm templating in action =======
+helm template --debug simple-chart/ --dry-run
+helm template --debug simple-chart/ --dry-run --values simple-chart/values.prod.yaml
+helm template --debug simple-chart/ --dry-run --values simple-chart/values.nonprod.yaml
+=====================================
+=====================================
 
-=== Installing MySQL using helm =======
-1. helm repo add bitnami https://charts.bitnami.com/bitnami
-2. helm install mysql bitnami/mysql --set password="secretpass"
-
+======================================
 ==== Instaling Jenkins using helm ====
-helm install my-release bitnami/jenkins --set service.type=NodePort
+helm install my-release --set jenkinsUser=admin --set jenkinsPassword=password --set service.type=NodePort bitnami/jenkins
+======================================
+======================================
 
+=====================================
 == Installing MongoDB using helm ========
 helm install my-release --set auth.rootPassword=secretpassword,auth.username=my-user,auth.password=my-password,auth.database=my-database bitnami/mongodb
+=====================================
+=====================================

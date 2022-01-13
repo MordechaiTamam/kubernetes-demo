@@ -1,5 +1,5 @@
 =========== K8 ===============
-kubectl apply -f pv-creation.yaml
+kubectl apply -f pv-creation-10g.yaml
 kubectl apply -f pv-creation-4g.yaml
 kubectl get pv task-pv-volume
 kubectl apply -f pvc.yaml
